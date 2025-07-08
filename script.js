@@ -89,7 +89,7 @@ function displaySearchResults(results) {
         const resultItem = document.createElement('div');
         resultItem.className = 'search-result-item';
         resultItem.innerHTML = `
-            <strong>${item.name}</strong> - $${item.price.toFixed(2)}
+            <strong>${item.name}</strong> - ₹${item.price.toFixed(2)}
         `;
         resultItem.addEventListener('click', () => {
             searchInput.value = item.name;
@@ -132,7 +132,7 @@ function displayInventory() {
         productCard.setAttribute('data-id', item.id);
         productCard.innerHTML = `
             <div class="product-name">${item.name}</div>
-            <div class="product-price">$${item.price.toFixed(2)}</div>
+            <div class="product-price">${item.price.toFixed(2)}</div>
             <form class="update-form" data-id="${item.id}">
                 <input type="number" step="0.01" min="0" value="${item.price}" required>
                 <button type="submit">Update Price</button>
@@ -204,7 +204,7 @@ function setupAddProductForm() {
     if (existingItem) {
       // Update existing product
       await update(ref(database, `inventory/${existingItem.id}`), { price });
-      showNotification(`Updated price for ${name} to $${price.toFixed(2)}`);
+      showNotification(`Updated price for ${name} to ${price.toFixed(2)}`);
     } else {
       // Add new product
       await push(ref(database, 'inventory'), { name, price });

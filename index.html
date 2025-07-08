@@ -18,7 +18,14 @@
             <input type="text" id="searchInput" placeholder="Search products...">
             <div id="searchResults" class="search-results"></div>
         </div>
-
+        <div class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <input type="text" id="productName" autocomplete="off" placeholder="Product Name" required>
+                <input type="number" id="productPrice" placeholder="Price" step="0.01" min="0" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
         <div class="inventory-section">
             <h2>Current Inventory</h2>
             <div id="inventoryList" class="inventory-list">
@@ -26,14 +33,7 @@
             </div>
         </div>
 
-        <div class="add-product-section">
-            <h2>Add New Product</h2>
-            <form id="addProductForm">
-                <input type="text" id="productName" placeholder="Product Name" required>
-                <input type="number" id="productPrice" placeholder="Price" step="0.01" min="0" required>
-                <button type="submit">Add Product</button>
-            </form>
-        </div>
+
     </div>
     <script type="module" src="script.js"></script>
 </body>
