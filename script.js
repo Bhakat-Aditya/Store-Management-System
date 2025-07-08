@@ -1,17 +1,25 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
 import { getDatabase, ref, push, update, remove, onValue } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
-import { firebaseConfig } from "./config.js"; // Import config
+
+// Your Firebase Config (replace with yours)
+const firebaseConfig = {
+    apiKey: "AIzaSyDS7bT4oLjH7IS9en9n6E6UrUJeJ3OAPHA",
+    authDomain: "store-management-anshu.firebaseapp.com",
+    databaseURL: "https://store-management-anshu-default-rtdb.firebaseio.com",
+    projectId: "store-management-anshu",
+    storageBucket: "store-management-anshu.appspot.com",
+    messagingSenderId: "858551373452",
+    appId: "1:858551373452:web:62cfa0056901a1bd3af5a9"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 const inventoryList = document.getElementById('inventoryList');
 const addProductForm = document.getElementById('addProductForm');
-
 
 // Inventory data
 let inventory = [];
