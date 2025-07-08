@@ -184,40 +184,40 @@ function displayInventory() {
 
 // Setup add product form
 function setupAddProductForm() {
-    addProductForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
+    addProductForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('productName').value.trim();
+  const price = parseFloat(document.getElementById('productPrice').value);
+  
+  if (!name || isNaN(price) || price <= 0) {
+    showNotification('Please enter valid product name and positive price!', true);
+    return;
+  }
 
-        const name = document.getElementById('productName').value.trim();
-        const price = parseFloat(document.getElementById('productPrice').value);
-
-        if (!name || isNaN(price) || price <= 0) {
-            showNotification('Please enter valid product name and positive price!', true);
-            return;
-        }
-
-        try {
-            // Check if product exists (case insensitive)
-            const existingItem = inventory.find(item =>
-                item.name.toLowerCase() === name.toLowerCase()
-            );
-
-            if (existingItem) {
-                // Update existing product
-                await update(ref(database, `inventory/${existingItem.id}`), { price });
-                showNotification(`Updated price for ${name} to $${price.toFixed(2)}`);
-            } else {
-                // Add new product
-                await push(ref(database, 'inventory'), { name, price });
-                showNotification(`Added new product: ${name}`);
-            }
-
-            // Reset form
-            addProductForm.reset();
-        } catch (error) {
-            console.error("Error saving product:", error);
-            showNotification('Failed to save product. Check console for details.', true);
-        }
-    });
+  try {
+    // Check if product exists (case insensitive)
+    const existingItem = inventory.find(item => 
+      item.name.toLowerCase() === name.toLowerCase()
+    );
+    
+    if (existingItem) {
+      // Update existing product
+      await update(ref(database, `inventory/${existingItem.id}`), { price });
+      showNotification(`Updated price for ${name} to $${price.toFixed(2)}`);
+    } else {
+      // Add new product
+      await push(ref(database, 'inventory'), { name, price });
+      showNotification(`Added new product: ${name}`);
+    }
+    
+    // Reset form
+    addProductForm.reset();
+  } catch (error) {
+    console.error("Error saving product:", error);
+    showNotification('Failed to save product. Check console for details.', true);
+  }
+});
 }
 
 // Show notification
