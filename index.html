@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Inventory System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Shop Inventory Management</h1>
+
+        <div class="search-section">
+            <h2>Search Products</h2>
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+
+        <div class="inventory-section">
+            <h2>Current Inventory</h2>
+            <div id="inventoryList" class="inventory-list">
+                <div class="loading">Loading inventory...</div>
+            </div>
+        </div>
+
+        <div class="add-product-section">
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <input type="text" id="productName" placeholder="Product Name" required>
+                <input type="number" id="productPrice" placeholder="Price" step="0.01" min="0" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="config.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
